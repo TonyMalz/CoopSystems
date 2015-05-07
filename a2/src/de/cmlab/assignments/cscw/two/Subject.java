@@ -1,10 +1,12 @@
 package de.cmlab.assignments.cscw.two;
-/*
+/**
  * This interface defines specific methods of a subject working according to the observer pattern (see Gamma et al. (1994)). A subject has a name and an associated observer.
+ *
+ * @author Tony Malzhacker
  */
 public interface Subject {
 
-	/*
+	/**
 	 * Adds the given observer to the set of observers. It returns true if this
 	 * registration was successful. True is only returned if the observer was
 	 * not contained by the set prior to the call of the method.
@@ -15,7 +17,7 @@ public interface Subject {
 	 */
 	public boolean addObserver(Observer o);
 
-	/*
+	/**
 	 * Propagating state information according to the pull model. After being
 	 * notified by the subject, the observers can get the relevant information
 	 * regarding the state change.
@@ -24,14 +26,14 @@ public interface Subject {
 	 */
 	public Object getState();
 
-	/*
+	/**
 	 * Broadcasts a changed state of the subject to all other registered
 	 * observers. In order to receive this information, a observer needs to be
 	 * registered to the subjects set.
 	 */
 	public void notifyObservers();
 
-	/*
+	/**
 	 * Removes the given observer from the set of observers and returns true if
 	 * this removal was successful. True is only return if the given observer
 	 * was contained by the set
@@ -42,7 +44,7 @@ public interface Subject {
 	 */
 	public boolean removeObserver(Observer o);
 
-	/*
+	/**
 	 * Propagating state information according to the pull model. Before
 	 * notifying the subject, an observer can propagate the relevant information
 	 * regarding the state changes he performed on the subject.

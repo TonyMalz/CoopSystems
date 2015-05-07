@@ -2,10 +2,21 @@ package de.cmlab.assignments.cscw.two;
 
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * Implementation of the SubjectInterface
+ *
+ * @author Tony Malzhacker
+ */
 public class SubjectImpl implements Subject {
 	private final Set<Observer> observers = new HashSet<Observer>(10);
 	private Object state;
+
+	/**
+	 * Initiates an subject with an initial state
+	 */
+	public SubjectImpl(){
+		state = new String("init");
+	}
 
 	@Override
 	public boolean addObserver(Observer o) {
