@@ -6,6 +6,7 @@ import java.util.Set;
  * Implementation of the SubjectInterface
  *
  * @author Tony Malzhacker
+ * @since   2015-05-07
  */
 public class SubjectImpl implements Subject {
 	private final Set<Observer> observers = new HashSet<Observer>(10);

@@ -2,7 +2,7 @@ package de.cmlab.assignments.cscw.two;
 /**
  * This interface defines specific methods of a subject working according to the observer pattern (see Gamma et al. (1994)). A subject has a name and an associated observer.
  *
- * @author Tony Malzhacker
+ * @author Mirko Fetter
  */
 public interface Subject {
 

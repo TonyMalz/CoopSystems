@@ -1,0 +1,45 @@
+•  What are general advantages and disadvantages of the Observer pattern?
+
+Vorteile:
+Lose Kopplung von Objekten.
+Das Subject muss nicht von Anfangan wissen, welche weiteren Laufzeitkomponenten alle Informationen von ihm benoetigen.
+Verschiedenartigste Objekte koennen sich mit dem Subject je nach Interesse verbinden und werden automatisch benachrichtigt, falls sich sein Status aendert.
+(Solange sie die geforderte Schnittstelle implementieren)
+
+Nachteile:
+Verwaltungsoverhead beim Verteilen der Nachrichten/Statusaenderungen.
+Es werden Nachrichten an alle registrierten Observer versandt, egal ob diese gerade fuer das einzelne Objekt von Interesse sind oder nicht.
+
+
+
+•  In Java Swing the Observer pattern is widely used. Please give the name under which the Observer pattern is recurring in Swing and name three concrete examples.
+
+Interface:
+java.util.Eventlistener
+
+Subklassen:
+
+Reagieren auf Benutzereingaben:
+ActionListener, MouseListener, KeyListener,...
+
+So kann z.B. eine JComponent wie JButton (Subject) ueber die Methode addActionListener einer anderen Klasse (Observer), welche dieses Interface implementiert, mitteilen, dass der Button geklickt wurde. (Push model)
+
+
+Reagieren auf Zustandsaenderungen bei einer "Bean" bzw. JComponent:
+PropertyChangeEvent
+
+Mittels addPropertyChangeListener kann auf Veraenderungen an der Komponente gelauscht werden, z.B. ob diese (de-)aktiviert wurde (enabled/disabled)
+
+
+Reagieren auf Modellbezogene Aenderungen
+TableModelListener
+
+Jede JTable besitzt ein TableModel, dessen Daten es entsprechend darzustellen versucht.
+Um bei Aenderungen am TableModel entprechend auf die neuen Daten reagieren zu koennen, implementiert sie TableModelListener und wird dann entsprechend bei Aenderungen vom Model benachrichtigt. (Trennung von Daten und Darstellung)
+
+
+
+
+
+
+
