@@ -36,11 +36,13 @@ public class ObserverImpl implements Observer {
 	 * Prints out the current state on the standard out
 	 */
 	public void printState(){
-		System.out.println(observerName + " current state: " + currentState);
+		System.out.println(" current state of "+ observerName +" => " + currentState);
 	}
 
 	/**
 	 * The observer is notified by the subject with this method.
+	 *
+	 * @return true if the new state could be acquired
 	 */
 	@Override
 	public boolean stateChanged() {
@@ -51,4 +53,13 @@ public class ObserverImpl implements Observer {
 		return false;
 	}
 
+	/**
+	 * Returns the name of the observer
+	 *
+	 * @return the name
+	 */
+	@Override
+	public String toString(){
+		return this.observerName;
+	}
 }
