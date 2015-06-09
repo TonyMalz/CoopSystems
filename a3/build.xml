@@ -1,0 +1,59 @@
+<!-- Tony Malzhacker Assignment 3-->
+<!-- ************************************************************ -->
+
+<project name="assignment03" default="compile" basedir=".">
+	<description>
+		Multithreaded Subject/Observer
+	</description>
+
+	<property name="src" value="./src"/>
+	<property name="build" value="./build"/>
+	<property name="doc" location="./doc"/>
+	
+    <target name="prepare">
+		<mkdir dir="${build}"/>
+	</target>
+
+	<target name="compile" depends="prepare">
+		<javac includeantruntime="false" srcdir="${src}" destdir="${build}">
+		</javac>
+	</target>
+
+	<target name="run" depends="compile">
+		<java classname="de.cmlab.assignments.cscw.three.ObserverRunner">
+			<classpath>
+			  <path location="${build}"/>
+			</classpath>
+		</java>
+	</target>
+	
+	<target name="clean" description="clean up">
+		<delete dir="${build}"/>
+		<delete dir="${doc}"/>
+	</target>
+
+	<target name="doc">
+		<javadoc
+			destdir="${doc}"
+			access="public"
+			source="1.7"
+			use="true"
+			notree="false"
+			nonavbar="false"
+			noindex="false"
+			splitindex="true"
+			author="true"
+			version="true"
+			packagenames="de.cmlab.assignments.cscw.three"
+			sourcepath="${src}">
+			<link href="http://docs.oracle.com/javase/7/docs/api/"/>
+			<classpath>
+				<path location="${build}"/>
+			</classpath>
+		</javadoc>
+	</target>
+
+
+	<target name="all" depends="clean,prepare,compile,run"/>
+
+</project>

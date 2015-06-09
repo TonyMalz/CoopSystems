@@ -1,0 +1,22 @@
+- Explain the term race condition (Wettlaufsituation or Laufbedingung) by an example that could arise when using the Observer Pattern in a cooperative system. 
+
+	Beim Registrieren von mehreren Observer gleichzeitig am Subject kann es z.B. unter folgenden Umstaenden zu race conditions kommen:
+	- das Subject verwendet eine ArrayList um die angemeldeten Observer zu verwalten
+	- es sind noch keine Eintraege in der Liste vorhanden
+	- 2 Observer wollen sich gleichzeitig registrieren
+	- beide Observer rufen die Methode addObserver auf
+	- diese Methode ermittelt fuer beide Threads jeweils getrennt voneinander die einzufuegende Position 0
+	- in beiden Threads wird der jeweilige Observer an der Postition 0 in die ArrayList eingefuegt
+	=> race condition: der Thread, der als letztes in die Liste schreibt, ueberschreibt das Ergebnis des vorherigen Threads und somit wird nur ein Observer in die Liste der Observer aufgenommen und spaeter auch benachrichtigt!
+
+
+- Explain the term livelock based on an example you could find in a cooperative system. 
+	
+	- 2 Prozesse arbeiten an einem Dokument gleichzeitig haben beide das Dokument veraendert und moechten dieses speichern
+	- Prozess 1 (P1) signalisiert Prozess 2 (P2), dass er Aenderungen vorgenommen hat und uebermittelt diese an P2
+	- P2 erhaelt Nachricht von P1, invalidiert seine bisherige Aenderung (speichert somit nicht) und versucht diese mit P1 zu 'mergen'
+	- Gleichzeitig hat P2 an P1 signalisiert, dass er Aenderungen vorgenommen hat, was auch bei P1 dazu fuehrt, dass er seine Aenderungen invalidiert und versucht mit P2 zu mergen.
+	- Unter Umstaenden werden beide wieder gleichzeitig fertig und signalisieren sich gegenseitig, dass sie Aenderungen vorgenommen haben und beginnen wieder von vorne, ohne dass einer der Beiden letzendlich dazu kommt seine Aenderungen final in das Dokument zu schreiben
+	=> Beide Prozesse sind zwar in ihrer Ausfuehrung nicht blockiert, kommen aber zu keinen Fortschritt, da sie sich staendig gegenseitig signalisieren wieder in ihrer Berechnung von vorne anzufangen.
+
+
